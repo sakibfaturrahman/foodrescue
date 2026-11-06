@@ -45,10 +45,6 @@ export default function LoginPage() {
             <div className="bg-[#0A3A33] text-white rounded-3xl p-8 sm:p-10 shadow-xl relative overflow-hidden space-y-4">
               <div className="absolute -right-10 -bottom-10 w-44 h-44 bg-[#E2F163]/20 rounded-full blur-3xl pointer-events-none" />
 
-              <span className="inline-flex items-center gap-1.5 bg-[#E2F163]/20 text-[#E2F163] px-3.5 py-1 rounded-full text-xs font-bold border border-[#E2F163]/30">
-                <Sparkles className="w-3.5 h-3.5" /> Akses Aplikasi PWA
-              </span>
-
               <h1 className="text-3xl sm:text-4xl font-extrabold leading-tight">
                 Selamat Datang Kembali di foodrescue.id
               </h1>
@@ -87,23 +83,7 @@ export default function LoginPage() {
                 <h2 className="text-2xl font-extrabold text-[#0A3A33]">
                   Masuk Akun
                 </h2>
-                <p className="text-xs text-gray-500 mt-1">
-                  Gunakan data dummy berikut untuk menguji aplikasi secara
-                  langsung.
-                </p>
-              </div>
-
-              {/* Notice Data Dummy Viki */}
-              <div className="bg-[#E2F163]/20 border border-[#0A3A33]/20 p-3 rounded-2xl text-xs text-[#0A3A33] flex items-center justify-between">
-                <div>
-                  <span className="font-extrabold block">Akun Dummy Demo:</span>
-                  <span className="text-[11px] text-gray-700">
-                    Akun: Viki (Beneficiary/User)
-                  </span>
-                </div>
-                <span className="bg-[#0A3A33] text-[#E2F163] text-[10px] font-bold px-2 py-0.5 rounded-md">
-                  Auto-filled
-                </span>
+               
               </div>
 
               <form onSubmit={handleSubmit} className="space-y-4">
@@ -164,7 +144,7 @@ export default function LoginPage() {
                   ) : (
                     <>
                       <LogIn className="w-4 h-4 text-[#E2F163]" />
-                      <span>Masuk ke Dashboard PWA</span>
+                      <span>Masuk</span>
                       <ArrowRight className="w-4 h-4 text-[#E2F163]" />
                     </>
                   )}
