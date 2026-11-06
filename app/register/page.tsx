@@ -92,9 +92,7 @@ export default function RegisterPage() {
                 <h2 className="text-2xl font-extrabold text-[#0A3A33]">
                   Registrasi Akun Baru
                 </h2>
-                <p className="text-xs text-gray-500 mt-1">
-                  Data berikut diisi secara otomatis dengan data dummy Viki.
-                </p>
+               
               </div>
 
               <form onSubmit={handleSubmit} className="space-y-4">
@@ -106,7 +104,6 @@ export default function RegisterPage() {
                   <div className="grid grid-cols-3 gap-2 text-xs font-bold">
                     {[
                       { id: "beneficiary", label: "Mahasiswa / Penerima" },
-                      { id: "donor", label: "Donatur" },
                       { id: "merchant", label: "Warung UMKM" },
                     ].map((item) => (
                       <button
