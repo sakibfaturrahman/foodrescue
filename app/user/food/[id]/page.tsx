@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import FoodDetailWrapper from "@/components/sections/mobile/detail/FoodDetailWrapper";
 
 export default async function FoodDetailPage({
