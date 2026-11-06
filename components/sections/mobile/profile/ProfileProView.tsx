@@ -30,8 +30,8 @@ export default function ProfileProView() {
 
   // State Form Data Diri
   const [formData, setFormData] = useState({
-    fullName: "Sakib Faturraahman",
-    email: "sakib@ftrtech.id",
+    fullName: "Viki",
+    email: "viki@gmail.com",
     phone: "081234567890",
     role: "Mahasiswa / Perantau (Beneficiary)",
     campus: "Universitas Perjuangan Tasikmalaya",
