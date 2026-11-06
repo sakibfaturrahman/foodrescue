@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
+import Link from "next/link";
 import {
   ArrowRight,
   MapPin,
@@ -17,6 +18,9 @@ import {
   Flame,
   Check,
 } from "lucide-react";
+
+// Inisialisasi komponen Motion Link agar Framer Motion & Next Link bekerja mulus bersama
+const MotionLink = motion(Link);
 
 export default function HeroSection() {
   const [portionCount, setPortionCount] = useState(12);
@@ -56,14 +60,15 @@ export default function HeroSection() {
             kupon digital transparan.
           </p>
 
-          {/* Dual Action Buttons dengan Micro-Animations */}
+          {/* Dual Action Buttons dengan Fix Dynamic Motion Link */}
           <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
             {/* Button 1: Donatur (Mulai Berdonasi) */}
-            <motion.button
+            <MotionLink
+              href="/donasi"
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.96 }}
               transition={{ type: "spring", stiffness: 400, damping: 17 }}
-              className="relative bg-[#0A3A33] text-white font-bold px-7 py-3.5 rounded-full text-sm hover:bg-[#062C27] transition-colors shadow-md flex items-center justify-center gap-2 group cursor-pointer overflow-hidden"
+              className="relative bg-[#0A3A33] text-white font-bold px-7 py-3.5 rounded-full text-sm hover:bg-[#062C27] transition-colors shadow-md flex items-center justify-center gap-2 group cursor-pointer overflow-hidden text-center"
             >
               {/* Shimmer Light Sweeping Effect */}
               <motion.div
@@ -95,14 +100,15 @@ export default function HeroSection() {
               <motion.div className="group-hover:translate-x-1.5 transition-transform duration-200">
                 <ArrowRight className="w-4 h-4 text-[#E2F163]" />
               </motion.div>
-            </motion.button>
+            </MotionLink>
 
             {/* Button 2: Penerima / Warung (Cari Warung & Klaim) */}
-            <motion.button
+            <MotionLink
+              href="/warung"
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.96 }}
               transition={{ type: "spring", stiffness: 400, damping: 17 }}
-              className="relative bg-white text-[#0A3A33] border-2 border-[#0A3A33] font-bold px-7 py-3.5 rounded-full text-sm hover:bg-[#FAF9F5] hover:border-[#062C27] transition-all flex items-center justify-center gap-2 cursor-pointer group shadow-sm overflow-hidden"
+              className="relative bg-white text-[#0A3A33] border-2 border-[#0A3A33] font-bold px-7 py-3.5 rounded-full text-sm hover:bg-[#FAF9F5] hover:border-[#062C27] transition-all flex items-center justify-center gap-2 cursor-pointer group shadow-sm overflow-hidden text-center"
             >
               {/* Animated MapPin Jump Effect */}
               <motion.div
@@ -115,7 +121,7 @@ export default function HeroSection() {
               </motion.div>
 
               <span>Cari Warung & Klaim</span>
-            </motion.button>
+            </MotionLink>
           </div>
 
           {/* Social Proof Bar */}
@@ -198,116 +204,122 @@ export default function HeroSection() {
                 {/* Target Cards Stack dengan Animasi Interaktif */}
                 <div className="space-y-2.5 relative">
                   {/* Target 1: Beneficiary Voucher + Laser Scanning Line Animation */}
-                  <motion.div
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.97 }}
-                    className="bg-[#0A3A33] text-white rounded-2xl p-3 shadow-md border border-[#0A3A33] relative overflow-hidden group cursor-pointer"
-                  >
-                    {/* Laser Scanner Bar Animation */}
+                  <Link href="/user/voucher" className="block">
                     <motion.div
-                      animate={{ y: [0, 80, 0] }}
-                      transition={{
-                        repeat: Infinity,
-                        duration: 2.5,
-                        ease: "easeInOut",
-                      }}
-                      className="absolute inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-[#E2F163] to-transparent shadow-[0_0_8px_#E2F163] pointer-events-none z-10"
-                    />
-
-                    <div className="flex items-center justify-between mb-1.5 relative z-20">
-                      <span className="text-[9px] uppercase font-bold text-[#E2F163] tracking-wider flex items-center gap-1">
-                        <QrCode className="w-3 h-3" /> Penerima Manfaat
-                      </span>
-                      <span className="text-[9px] bg-white/10 text-white px-2 py-0.5 rounded-full font-semibold">
-                        Klaim Digital
-                      </span>
-                    </div>
-                    <h2 className="text-xs font-bold leading-snug relative z-20">
-                      Voucher Makan Siang Gratis
-                    </h2>
-                    <p className="text-[10px] text-gray-300 mt-0.5 line-clamp-1 relative z-20">
-                      Tunjukkan QR Code ke Warteg Bahari
-                    </p>
-
-                    <div className="mt-2 bg-[#E2F163] text-[#0A3A33] text-[10px] font-extrabold py-1.5 rounded-xl text-center shadow-sm flex items-center justify-center gap-1 relative z-20 group-hover:bg-[#d5e454] transition-colors">
-                      <QrCode className="w-3 h-3" />
-                      <span>Tampilkan QR Klaim</span>
-                    </div>
-                  </motion.div>
-
-                  {/* Target 2: Merchant Payout Console + Live Counter Animation */}
-                  <motion.div
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.97 }}
-                    className="bg-white rounded-2xl p-3 shadow-sm border border-gray-200 cursor-pointer relative"
-                  >
-                    <div className="flex items-center justify-between mb-1">
-                      <span className="text-[9px] uppercase font-bold text-[#0A3A33] tracking-wider flex items-center gap-1">
-                        <Store className="w-3 h-3" /> Warung UMKM
-                      </span>
-                      <span className="text-[9px] font-extrabold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full flex items-center gap-1">
-                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping" />
-                        Cair Instant
-                      </span>
-                    </div>
-                    <div className="flex items-center justify-between">
-                      <div>
-                        <div className="flex items-baseline gap-1">
-                          <motion.h2
-                            key={portionCount}
-                            initial={{ scale: 1.2, color: "#059669" }}
-                            animate={{ scale: 1, color: "#0A3A33" }}
-                            transition={{ duration: 0.3 }}
-                            className="text-xs font-bold"
-                          >
-                            {portionCount} Porsi
-                          </motion.h2>
-                          <span className="text-xs font-bold text-[#0A3A33]">
-                            Diselamatkan
-                          </span>
-                        </div>
-                        <p className="text-[10px] text-gray-500">
-                          Subsidi otomatis cair ke rekening
-                        </p>
-                      </div>
-
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.97 }}
+                      className="bg-[#0A3A33] text-white rounded-2xl p-3 shadow-md border border-[#0A3A33] relative overflow-hidden group cursor-pointer"
+                    >
+                      {/* Laser Scanner Bar Animation */}
                       <motion.div
-                        animate={{ rotate: [0, 10, -10, 0] }}
+                        animate={{ y: [0, 80, 0] }}
                         transition={{
                           repeat: Infinity,
-                          duration: 3,
+                          duration: 2.5,
                           ease: "easeInOut",
                         }}
-                        className="w-7 h-7 rounded-lg bg-[#0A3A33] text-[#E2F163] flex items-center justify-center shrink-0 shadow-sm"
-                      >
-                        <TrendingUp className="w-3.5 h-3.5" />
-                      </motion.div>
-                    </div>
-                  </motion.div>
+                        className="absolute inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-[#E2F163] to-transparent shadow-[0_0_8px_#E2F163] pointer-events-none z-10"
+                      />
+
+                      <div className="flex items-center justify-between mb-1.5 relative z-20">
+                        <span className="text-[9px] uppercase font-bold text-[#E2F163] tracking-wider flex items-center gap-1">
+                          <QrCode className="w-3 h-3" /> Penerima Manfaat
+                        </span>
+                        <span className="text-[9px] bg-white/10 text-white px-2 py-0.5 rounded-full font-semibold">
+                          Klaim Digital
+                        </span>
+                      </div>
+                      <h2 className="text-xs font-bold leading-snug relative z-20">
+                        Voucher Makan Siang Gratis
+                      </h2>
+                      <p className="text-[10px] text-gray-300 mt-0.5 line-clamp-1 relative z-20">
+                        Tunjukkan QR Code ke Warteg Bahari
+                      </p>
+
+                      <div className="mt-2 bg-[#E2F163] text-[#0A3A33] text-[10px] font-extrabold py-1.5 rounded-xl text-center shadow-sm flex items-center justify-center gap-1 relative z-20 group-hover:bg-[#d5e454] transition-colors">
+                        <QrCode className="w-3 h-3" />
+                        <span>Tampilkan QR Klaim</span>
+                      </div>
+                    </motion.div>
+                  </Link>
+
+                  {/* Target 2: Merchant Payout Console + Live Counter Animation */}
+                  <Link href="/user/warung" className="block">
+                    <motion.div
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.97 }}
+                      className="bg-white rounded-2xl p-3 shadow-sm border border-gray-200 cursor-pointer relative"
+                    >
+                      <div className="flex items-center justify-between mb-1">
+                        <span className="text-[9px] uppercase font-bold text-[#0A3A33] tracking-wider flex items-center gap-1">
+                          <Store className="w-3 h-3" /> Warung UMKM
+                        </span>
+                        <span className="text-[9px] font-extrabold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full flex items-center gap-1">
+                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping" />
+                          Cair Instant
+                        </span>
+                      </div>
+                      <div className="flex items-center justify-between">
+                        <div>
+                          <div className="flex items-baseline gap-1">
+                            <motion.h2
+                              key={portionCount}
+                              initial={{ scale: 1.2, color: "#059669" }}
+                              animate={{ scale: 1, color: "#0A3A33" }}
+                              transition={{ duration: 0.3 }}
+                              className="text-xs font-bold"
+                            >
+                              {portionCount} Porsi
+                            </motion.h2>
+                            <span className="text-xs font-bold text-[#0A3A33]">
+                              Diselamatkan
+                            </span>
+                          </div>
+                          <p className="text-[10px] text-gray-500">
+                            Subsidi otomatis cair ke rekening
+                          </p>
+                        </div>
+
+                        <motion.div
+                          animate={{ rotate: [0, 10, -10, 0] }}
+                          transition={{
+                            repeat: Infinity,
+                            duration: 3,
+                            ease: "easeInOut",
+                          }}
+                          className="w-7 h-7 rounded-lg bg-[#0A3A33] text-[#E2F163] flex items-center justify-center shrink-0 shadow-sm"
+                        >
+                          <TrendingUp className="w-3.5 h-3.5" />
+                        </motion.div>
+                      </div>
+                    </motion.div>
+                  </Link>
 
                   {/* Target 3: Donor ESG Card + Glowing Pulse Indicator */}
-                  <motion.div
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.97 }}
-                    className="bg-[#31103F] text-white rounded-2xl p-3 shadow-sm border border-purple-900/40 relative overflow-hidden cursor-pointer"
-                  >
+                  <Link href="/donasi" className="block">
                     <motion.div
-                      animate={{ opacity: [0.3, 0.7, 0.3] }}
-                      transition={{ repeat: Infinity, duration: 2 }}
-                      className="absolute -right-4 -bottom-4 w-16 h-16 bg-[#E2F163]/20 rounded-full blur-xl pointer-events-none"
-                    />
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.97 }}
+                      className="bg-[#31103F] text-white rounded-2xl p-3 shadow-sm border border-purple-900/40 relative overflow-hidden cursor-pointer"
+                    >
+                      <motion.div
+                        animate={{ opacity: [0.3, 0.7, 0.3] }}
+                        transition={{ repeat: Infinity, duration: 2 }}
+                        className="absolute -right-4 -bottom-4 w-16 h-16 bg-[#E2F163]/20 rounded-full blur-xl pointer-events-none"
+                      />
 
-                    <div className="flex items-center justify-between mb-1">
-                      <span className="text-[9px] uppercase font-bold text-[#E2F163] tracking-wider flex items-center gap-1">
-                        <Sparkles className="w-3 h-3" /> Donatur & CSR
-                      </span>
-                      <CheckCircle2 className="w-3.5 h-3.5 text-[#E2F163]" />
-                    </div>
-                    <h2 className="text-xs font-bold">Laporan Dampak ESG</h2>
-                    <p className="text-[10px] text-gray-300 mt-0.5 line-clamp-1">
-                      15.2 kg makanan & 28 kg CO₂ dicegah
-                    </p>
-                  </motion.div>
+                      <div className="flex items-center justify-between mb-1">
+                        <span className="text-[9px] uppercase font-bold text-[#E2F163] tracking-wider flex items-center gap-1">
+                          <Sparkles className="w-3 h-3" /> Donatur & CSR
+                        </span>
+                        <CheckCircle2 className="w-3.5 h-3.5 text-[#E2F163]" />
+                      </div>
+                      <h2 className="text-xs font-bold">Laporan Dampak ESG</h2>
+                      <p className="text-[10px] text-gray-300 mt-0.5 line-clamp-1">
+                        15.2 kg makanan & 28 kg CO₂ dicegah
+                      </p>
+                    </motion.div>
+                  </Link>
 
                   {/* Floating Toast Notification Simulation */}
                   {showToast && (

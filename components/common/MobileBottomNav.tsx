@@ -9,10 +9,10 @@ export default function MobileBottomNav() {
   const pathname = usePathname();
 
   const navItems = [
-    { id: "explore", label: "Eksplor", icon: Compass, href: "/" },
-    { id: "merchants", label: "Warung", icon: Store, href: "/warung" },
-    { id: "vouchers", label: "Voucher", icon: QrCode, href: "/voucher" },
-    { id: "profile", label: "Profil", icon: User, href: "/profile" },
+    { id: "explore", label: "Eksplor", icon: Compass, href: "/user/dashboard" },
+    { id: "merchants", label: "Warung", icon: Store, href: "/user/warung" },
+    { id: "vouchers", label: "Voucher", icon: QrCode, href: "/user/voucher" },
+    { id: "profile", label: "Profil", icon: User, href: "/user/profile" },
   ];
 
   return (
@@ -20,12 +20,7 @@ export default function MobileBottomNav() {
       <div className="flex justify-around items-center max-w-md mx-auto relative">
         {navItems.map((item) => {
           const Icon = item.icon;
-
-          // Cek active route
-          const isActive =
-            item.href === "/"
-              ? pathname === "/"
-              : pathname.startsWith(item.href);
+          const isActive = pathname.startsWith(item.href);
 
           return (
             <Link
@@ -33,7 +28,6 @@ export default function MobileBottomNav() {
               href={item.href}
               className="relative flex flex-col items-center justify-center py-1.5 px-4 rounded-full cursor-pointer select-none transition-transform active:scale-95"
             >
-              {/* Animated Liquid Glass Pill Background */}
               {isActive && (
                 <motion.div
                   layoutId="liquidGlassTab"
@@ -47,7 +41,6 @@ export default function MobileBottomNav() {
                 />
               )}
 
-              {/* Icon & Label */}
               <div
                 className={`relative z-10 flex flex-col items-center gap-0.5 transition-colors duration-200 ${
                   isActive
@@ -71,7 +64,6 @@ export default function MobileBottomNav() {
                 </span>
               </div>
 
-              {/* Glowing Liquid Point Indicator */}
               {isActive && (
                 <motion.span
                   layoutId="liquidDot"
